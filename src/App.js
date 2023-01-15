@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Navbar';
+import Home from './Home';
+import Create from './Create';
 
 function App() {
+  const title = "Welcome to my new blog"
+  const likes = Math.floor((Math.random()*100))
+  const link = "https://www.safaricom.co.ke/"
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div className="content">
+        <Home />
+        <br /><br /><br /><br /><br />
+        <Create />
+        <br /><br /><br /><br /><br /><br />
+        <p>{Math.floor((Math.random()*100))}</p>
+        <p> Received {likes} likes </p>
+        <a href={link} target="_blank" >Link</a>
+      </div>
     </div>
   );
 }
