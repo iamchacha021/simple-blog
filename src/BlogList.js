@@ -1,26 +1,20 @@
 // import useFetch from "./useFetch"
 
+import { Link } from "react-router-dom"
+
 
 const BlogList = ({blogs, title, handleDelete}) => {
     // const {data: blog}
 
     const blogsRet = blogs.map((blog)=>{
-
-        const handleBlogDelete=()=>{
-            fetch(`http://localhost:8000/blogs/${blog.id}`, {
-                method: 'DELETE'
-            })
-            .then((res)=>{return res.json()})
-            .then((data)=>{console.log(data)})
-        }
-
         return(
             <div className="blog-preview" key={blog.id}>
-                <h2>{blog.title}</h2>
-                <p>{blog.body} </p>
-                <small>Author {blog.id}: {blog.author} </small>
-                <button onClick={handleBlogDelete}>Delete Blog</button>
-                <br />
+                <Link to={`/blogs/${blog.id}`}>
+                    <h2>{blog.title}</h2>
+                    {<p>{blog.body.slice(0, 150)}...</p>}
+                    <br />
+                    <small>Author {blog.id}: {blog.author} </small>   
+                </Link>    
             </div>    
         )
     })

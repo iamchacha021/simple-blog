@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 const Create = () => {
     const [title, setTitle]= useState('')
     const [body, setBody]= useState('')
     const [author, setAuthor]= useState('yoshi')
+    const [isPending, setIsPending]= useState(false)
+    const history = useHistory()
     
 
     const handleSubmit = (ev)=>{
-        // ev.preventDefault()
+        ev.preventDefault()
         const blog = {title, body, author}
         
         fetch('http://localhost:8000/blogs',{
@@ -14,7 +17,10 @@ const Create = () => {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(blog)
         })
-        .then((res)=>{return res.json()})
+        .then((res)=>{
+            setIsPending(false)
+            history.push('/')
+            return res.json()})
         .then((data)=>{console.log(data)})
     }
     return ( 
@@ -44,7 +50,7 @@ const Create = () => {
                     <option value="mario">mario</option>
                     <option value="yoshi">yoshi</option>
                  </select>
-                 <button>Add Blog</button>
+                 {<button>Add Blog</button>}
             </form>
             <p>{title}</p>
             <p>{body} </p>

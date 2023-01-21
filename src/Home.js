@@ -22,10 +22,9 @@ const Home = () => {
                 <p>{name} is {age} years old. </p>
                 <button onClick={handleClick} >Click me</button>
                 {isPending && <strong>The page is loading...</strong> }
-                <p>{error}</p>
-                <BlogList blogs={data} title="All the Blogs"  />
+                <BlogList blogs={data} title="All the Blogs" /*handleDelete={handleDelete}*/ />
                 <br /> <br />
-                <BlogList blogs={data.filter((blog)=>blog.author ==="chacha")}  title="chacha's blogs" />
+                <BlogList blogs={data.filter((blog)=>blog.author ==="chacha")}  title="chacha's blogs" /*handleDelete={handleDelete}*/ />
                 <br /> <br /> <br />
 
                 <button onClick={()=>setName('luigi')}>Change Name</button>
